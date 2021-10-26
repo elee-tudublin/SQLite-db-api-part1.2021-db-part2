@@ -7,26 +7,24 @@ const productService = require('../services/productService.js');
 */
 router.get('/', function (req, res) {
 
-    // Send a JSON response - this app will be a web api so no need to send HTML
-    //res.end(JSON.stringify({message: 'This is the home page'}));
-    res.json({content: 'This is the default route for the Product controller.'});
+  // Send a JSON response - this app will be a web api so no need to send HTML
+  //res.end(JSON.stringify({message: 'This is the home page'}));
+  // res.json({content: 'This is the default route for the Product controller.'});
+
+  // Get products
+  try {
+
+    const result = productService.getProducts();
+    res.json(result);
+
+    // Catch and send errors  
+  } catch (err) {
+    res.status(500);
+    res.send(err.message);
+  }
 
 });
 
-router.get('/product', function (req, res) {
-
-    // Get products
-    try {
-
-        const result = productService.getProducts();
-        res.json(result);
-
-      // Catch and send errors  
-      } catch (err) {
-        res.status(500);
-        res.send(err.message);
-      }
-});
 
 // export
 module.exports = router;
