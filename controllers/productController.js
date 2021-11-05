@@ -79,6 +79,22 @@ router.get('/byid', (req, res) => {
     res.status(500);
     res.send(err.message);
   }
+  // Send a JSON response - this app will be a web api so no need to send HTML
+  //res.end(JSON.stringify({message: 'This is the home page'}));
+  // res.json({content: 'This is the default route for the Product controller.'});
+
+  // Get products
+  try {
+
+    const result = productService.getProducts();
+    res.json(result);
+
+    // Catch and send errors  
+  } catch (err) {
+    res.status(500);
+    res.send(err.message);
+  }
+
 });
 
 
