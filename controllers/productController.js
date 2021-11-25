@@ -56,7 +56,7 @@ router.get('/:id', (req, res) => {
 // Endpoint to handle requests for product by id
 // req.query version
 // req format: /product/byid?id=1
-//
+/*
 router.get('/byid', (req, res) => {
 
   // read values from req
@@ -96,6 +96,7 @@ router.get('/byid', (req, res) => {
   }
 
 });
+*/
 
 
 // export
